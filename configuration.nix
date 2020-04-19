@@ -48,7 +48,7 @@
   networking.useDHCP = false;
   networking.interfaces.ens33.useDHCP = true;
 
-  time.timeZone = "Euorpe/Vienna";
+  time.timeZone = "Europe/Vienna";
 
   # nix search ...
   environment.systemPackages = [
