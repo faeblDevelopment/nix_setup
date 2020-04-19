@@ -52,11 +52,12 @@
 
   # nix search ...
   environment.systemPackages = [
-    wget
-    vim
-    git
-    stack
-    firefox
+    pkgs.wget
+    pkgs.vim
+    pkgs.git
+    pkgs.stack
+    pkgs.firefox
+    pkgs.pastebinit
   ];
 
   sound.enable = true;
