@@ -40,12 +40,13 @@
   boot.loader.grub.device = "/dev/sda";
   boot.initrd.checkJournalingFS = false;
   # ensd virutualbox
-  
-  fileSystems = [
-    { mountPoint = "/";
-      device = "/dev/mapper/crypted";
-    }
-  ];
+
+  # already present in hardware-configuration.nix
+  # fileSystems = [
+  #  { mountPoint = "/";
+  #    device = "/dev/mapper/crypted";
+  # }
+  #];
 
 
   networking.hostName = "nixos_test1";
