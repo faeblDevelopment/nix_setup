@@ -14,6 +14,7 @@
 # cryptsetup luksFormat /dev/sda1
 # cryptsetup luksOpen /dev/sda1 crypted
 # mkfs.ext4 /dev/mapper/crypted
+# mount /dev/mapper/crypted /mnt
 # mkdir -p /mnt/boot                      # (for UEFI systems only)
 # mount /dev/disk/by-label/boot /mnt/boot # (for UEFI systems only)
 
@@ -34,8 +35,12 @@
 
   
   boot.loader.systemd-boot.enable = true; 
-  boot.initrd.luks.devices.crypted.device = "/dev/sda1";
-
+  #boot.initrd.luks.devices.crypted.device = "/dev/sda1";
+  #for virtualbox
+  boot.loader.grub.device = "/dev/sda";
+  boot.initrd.checkJournalingFS = false;
+  # ensd virutualbox
+  
   fileSystems = [
     { mountPoint = "/";
       device = "/dev/mapper/crypted";
@@ -53,11 +58,12 @@
   # nix search ...
   environment.systemPackages = [
     pkgs.wget
+    pkgs.curl
     pkgs.vim
     pkgs.git
     pkgs.stack
     pkgs.firefox
-    pkgs.pastebinit
+    # pkgs.pastebinit; use paste.centos.org api with curl
   ];
 
   sound.enable = true;
